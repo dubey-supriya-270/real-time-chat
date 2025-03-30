@@ -6,7 +6,7 @@ import axios from "axios";
 import VoiceRecorder from "@/components/VoiceRecorder";
 import InviteUser from "@/components/InviteUser";
 
-const socket = io(process.env.SOCKET_URL);
+const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 
 type Message = {
   sender: { username: string };
