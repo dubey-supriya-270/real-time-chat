@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from '@/lib/axios'
 import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
@@ -22,7 +22,7 @@ export default function DashboardPage() {
     const token = sessionStorage.getItem("token");
     if (!token) return alert("Please login first");
 
-    const res = await axios.post(
+    const res = await api.post(
       "/api/rooms/create",
       { name: roomName },
       {
@@ -40,7 +40,7 @@ export default function DashboardPage() {
     const token = sessionStorage.getItem("token");
     if (!token) return alert("Please login first");
 
-    const res = await axios.post(
+    const res = await api.post(
       "/api/rooms/join",
       { roomId: joinId },
       {

@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef } from 'react'
-import axios from 'axios'
+import api from '@/lib/axios'
 
 type Props = {
   onTranscript: (text: string) => void
@@ -24,7 +24,7 @@ export default function VoiceRecorder({ onTranscript }: Props) {
       const formData = new FormData()
       formData.append('audio', audioBlob, 'voice.webm')
 
-      const res = await axios.post('/api/speech/transcribe', formData)
+      const res = await api.post('/api/speech/transcribe', formData)
       onTranscript(res.data.transcript)
 
       audioChunksRef.current = []

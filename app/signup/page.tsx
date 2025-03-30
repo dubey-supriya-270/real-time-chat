@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState } from 'react'
 import Webcam from 'react-webcam'
-import axios from 'axios'
+import api from '@/lib/axios'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
@@ -26,7 +26,7 @@ export default function SignupPage() {
 
     setLoading(true)
     try {
-      const res = await axios.post('/api/auth/signup', {
+      const res = await api.post('/api/auth/signup', {
         username,
         password,
         email,

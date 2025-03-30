@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import io from "socket.io-client";
-import axios from "axios";
+import api from '@/lib/axios'
 import VoiceRecorder from "@/components/VoiceRecorder";
 import InviteUser from "@/components/InviteUser";
 
@@ -48,7 +48,7 @@ export default function ChatRoomPage() {
     socket.emit("joinRoom", { roomId });
 
     const token = sessionStorage?.getItem("token");
-    axios
+    api
       .get(`/api/messages/${roomId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -88,7 +88,7 @@ export default function ChatRoomPage() {
     socket.emit("sendMessage", message);
 
     const token = sessionStorage.getItem("token");
-    await axios.post("/api/messages/send", message, {
+    await api.post("/api/messages/send", message, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

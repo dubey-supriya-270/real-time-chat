@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import axios from 'axios'
+import api from '@/lib/axios'
 
 type Props = {
   roomId: string
@@ -20,7 +20,7 @@ export default function InviteUser({ roomId }: Props) {
 
     try {
       const token = sessionStorage.getItem('token')
-      await axios.post(
+      await api.post(
         '/api/rooms/invite-link',
         { roomId, email },
         {

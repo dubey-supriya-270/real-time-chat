@@ -1,9 +1,9 @@
 "use client";
 import { useRef, useState } from "react";
 import Webcam from "react-webcam";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from 'next/image'
+import api from '@/lib/axios'
 
 export default function LoginPage() {
   const webcamRef = useRef<Webcam>(null);
@@ -26,7 +26,7 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      const res = await axios.post("/api/auth/login", {
+      const res = await api.post("/api/auth/login", {
         username,
         password,
         image: imageSrc,

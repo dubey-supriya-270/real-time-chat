@@ -3,7 +3,7 @@
 
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '@/lib/axios'
 
 export default function JoinRoomClient() {
   const searchParams = useSearchParams()
@@ -25,7 +25,7 @@ export default function JoinRoomClient() {
       return
     }
 
-    axios
+    api
       .post('/api/rooms/accept-invite', { inviteId: token }, {
         headers: { Authorization: `Bearer ${authToken}` }
       })
