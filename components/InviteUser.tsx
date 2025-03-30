@@ -32,7 +32,7 @@ export default function InviteUser({ roomId }: Props) {
 
       setMessage('✅ Invite sent successfully!')
       setEmail('')
-    } catch (err: any) {
+    } catch (err) {
       console.error(err)
       setMessage('❌ Failed to send invite.')
     } finally {

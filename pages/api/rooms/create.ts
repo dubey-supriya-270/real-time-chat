@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 const decoded = token ? verifyToken(token) : null
 if (!decoded) return res.status(401).json({ error: 'Unauthorized' })
 
-const createdBy = (decoded as any).id
+const createdBy = decoded.id
 
 
 

@@ -6,7 +6,7 @@ import axios from "axios";
 import VoiceRecorder from "@/components/VoiceRecorder";
 import InviteUser from "@/components/InviteUser";
 
-const socket = io("http://localhost:4000");
+const socket = io(process.env.SOCKET_URL);
 
 type Message = {
   sender: { username: string };
@@ -57,7 +57,7 @@ export default function ChatRoomPage() {
 
     const handleReceive = (msg: Message) =>
       setMessages((prev) => [...prev, msg]);
-    const handleTyping = ({ username }: any) => setTypingUser(username);
+    const handleTyping = ({ username }: {username:string}) => setTypingUser(username);
     const stopTyping = () => setTypingUser(null);
 
     socket.on("receiveMessage", handleReceive);

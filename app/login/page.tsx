@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Image from 'next/image'
 
 export default function LoginPage() {
   const webcamRef = useRef<Webcam>(null);
@@ -35,8 +36,8 @@ export default function LoginPage() {
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("user", JSON.stringify(user));
       router.push("/dashboard");
-    } catch (err: any) {
-      alert(err.response?.data?.error || "Login failed");
+    } catch (err) {
+      alert(err || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -81,7 +82,7 @@ export default function LoginPage() {
           </button>
 
           {imageSrc && (
-            <img src={imageSrc} alt="Captured Selfie" className="w-32 h-32 object-cover rounded-full mx-auto mt-2 border shadow" />
+            <Image src={imageSrc} width={160} height={160} alt="Captured Selfie" className="w-32 h-32 object-cover rounded-full mx-auto mt-2 border shadow"  />
           )}
 
           <button

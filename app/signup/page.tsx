@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import Webcam from 'react-webcam'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 export default function SignupPage() {
   const webcamRef = useRef<Webcam>(null)
@@ -88,9 +89,10 @@ export default function SignupPage() {
           </button>
 
           {imageSrc && (
-            <img
+            <Image
               src={imageSrc}
               alt="Selfie"
+              width={160} height={160}
               className="w-28 h-28 object-cover rounded-full mx-auto border mt-2"
             />
           )}

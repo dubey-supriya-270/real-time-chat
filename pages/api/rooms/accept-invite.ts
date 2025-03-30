@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!invite) return res.status(404).json({ error: 'Invite not found or expired' })
 
   // Add user to room
-  const userId = (decoded as any).id
+  const userId = decoded.id
 
   await db.roomMember.upsert({
     where: {

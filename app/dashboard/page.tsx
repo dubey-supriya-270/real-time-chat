@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import InviteUser from '@/components/InviteUser'
 
 export default function DashboardPage() {
   const [roomName, setRoomName] = useState("");
@@ -15,7 +14,7 @@ export default function DashboardPage() {
     if (!token) {
       router.push("/login");
     }
-  }, []);
+  }, [router]);
 
   const handleCreateRoom = async () => {
     if (!roomName) return alert("Enter a room name");
